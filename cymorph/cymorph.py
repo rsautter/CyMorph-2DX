@@ -5,28 +5,6 @@ import scipy.ndimage as ndimage
 from GPA import GPA
 from scipy.ndimage.filters import convolve
 
-'''
-	Minimal CyMorph package (mcm.py)
-'''
-
-
-def entropy(mat: np.ndarray,mask: np.ndarray=None,bins: int=100) -> float:
-	seq = np.ravel(mat)
-	if bins<2:
-		raise Exception("Bins must be greater than 1!")
-	if mask is None:
-		mask = np.ones(len(seq))
-	else:
-		if mask.shape != mat.shape:
-			raise Exception("Mask has different size!")
-		mask = np.ravel(mask)
-	seq = seq[mask>0.5]
-	f = np.histogram(seq,bins)[0]
-	f = f/np.sum(f)
-	f = f[f>0.0]
-	return np.abs(-np.sum(f*np.log(f))/np.log(bins))
-
-	
 def asymmetry(mat: np.ndarray,mask: np.ndarray=None,angle: float = 90, corrFunct=spearmanr,returnScatter=False):
 	if mask is None:
 		maskR = np.ones(mat.shape)
@@ -79,7 +57,7 @@ def h(mat: np.ndarray,mask: np.ndarray=None,bins: int=100):
 
 def g2(mat:np.ndarray,tol: float = 0.03):
 	ga = GPA(tol)
-	return 2*(ga(mat.astype(float),moment=["G2"])["G2"])
+	return (ga(mat.astype(float),moment=["G2"])["G2"])
 
 def g1(mat:np.ndarray,tol: float = 0.03):
 	ga = GPA(tol)

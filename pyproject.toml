@@ -1,0 +1,19 @@
+[project]
+name = "cymorph2Dx"
+description = "My package description"
+readme = "README.md"
+authors = [
+    { name = "Rubens Sautter", email = "rubens.sautter@gmail.com" }
+]
+license = { text = "BSD 3-Clause License" }
+dependencies = [
+    "numpy",
+    "GPA",
+    "eta",
+    "scipy",
+    "petrofit"
+]
+dynamic = ["version"]
+
+[project.urls]
+homepage = "https://cymorph2Dx.github.io"
