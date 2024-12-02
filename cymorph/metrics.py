@@ -1,6 +1,5 @@
 import numpy as np
 from .cymorph import *
-import petrofit as pf
 import eta
 
 class Metrics():
@@ -45,17 +44,6 @@ class Metrics():
 			self.toMeasure = toMeasure
 		self.preprocess = preprocess
 		
-	def __genConcObj(img):
-		maxDim = np.max(img.shape)
-		cat, segm, segm_deblend = pf.make_catalog(img,3*np.std(img),wcs=None,deblend=True,npixels=npixels,nlevels=30,contrast=0.001,plot=False)
-		sorted_idx_list = pf.order_cat(cat, key='area', reverse=True)
-		idx = sorted_idx_list[1]
-		r_list = pf.make_radius_list(max_pix=maxDim, n=maxDim)
-		flux_arr, area_arr, error_arr = pf.source_photometry( cat[idx], img, segm_deblend,r_list,error=err,cutout_size=max(r_list)*2,bg_sub=True,sigma=3, sigma_type='clip',plot=False)
-		p = pf.Petrosian(r_list, area_arr, flux_arr, flux_err=error_arr)
-		return p
-
-		
 	def __call__(self,img,**kwargs):
 		'''
 		===================================================
@@ -65,8 +53,6 @@ class Metrics():
 		'''
 		filtered = self.preprocess(img)
 		results = {}
-		if ('c1' in self.toMeasure) or ('c2' in self.toMeasure) or ('cn' in self.toMeasure):
-			conc =  __genConcObj(img)
 		for m in self.toMeasure:
 			args = {}
 			if m == 'c1':
