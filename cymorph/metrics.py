@@ -58,13 +58,15 @@ class Metrics():
 		results = {}
 		for m in self.toMeasure:
 			args = {}
+			'''
 			if m == 'c1':
 				results[m] = p.concentration_index(0.2,0.8)
 			elif m == 'c2':
 				results[m] = p.concentration_index(0.5,0.9)
 			elif m == 'cn':
 				results[m] = p.concentration_index(0.35,0.75)
-			elif m == 'a2':
+    			'''
+			if m == 'a2':
 				if 'mask' in kwargs.keys:
 					args[mask] = kwargs['mask']
 				results[m] = a2(filtered,*args)
