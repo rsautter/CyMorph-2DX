@@ -1,6 +1,6 @@
 [project]
-name = "cymorph2Dx"
-description = "My package description"
+name = "CyMorph2"
+description = "A galaxy Morphology package"
 readme = "README.md"
 authors = [
     { name = "Rubens Sautter", email = "rubens.sautter@gmail.com" }
@@ -9,9 +9,7 @@ license = { text = "BSD 3-Clause License" }
 dependencies = [
     "numpy",
     "GPA",
-    "eta",
-    "scipy",
-    "petrofit"
+    "eta"
 ]
 dynamic = ["version"]
 
