@@ -1,6 +1,7 @@
 import numpy as np
 from .cymorph import *
 import eta
+from GPA import GPA
 
 class Metrics():
 	def __init__(self,toMeasure=None,preprocess=None):
@@ -56,6 +57,7 @@ class Metrics():
 		else:
 			filtered = self.preprocess(img)
 		results = {}
+		ga = GPA(0.03)
 		for m in self.toMeasure:
 			args = {}
 			'''
@@ -119,8 +121,10 @@ class Metrics():
 					if 'ny' in kwargs.keys():
 						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Permutation'],*args)
-			elif m == 'ssH':
-				results[m] = eta.entropy(filtered,['Shannon'],['Spectral'])
-			elif m == 'ssq':
-				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Spectral'])
+			elif m =='g1':
+				results[m] = ga(filtered,["G1C"])["G1C"]
+			elif m =='g2':
+				results[m] = ga(filtered,["G2"])["G2"]
+			elif m == 'g3':
+				results[m] = ga(filtered,["G3"])["G3"]
 		return results
