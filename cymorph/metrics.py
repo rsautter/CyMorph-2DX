@@ -44,7 +44,7 @@ class Metrics():
 			self.toMeasure = toMeasure
 		self.preprocess = preprocess
 		
-	def __call__(self,img,**kwargs):
+	def __call__(self,img,**kwargs={}):
 		'''
 		===================================================
 		
