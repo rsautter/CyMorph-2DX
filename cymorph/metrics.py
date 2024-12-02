@@ -44,7 +44,7 @@ class Metrics():
 			self.toMeasure = toMeasure
 		self.preprocess = preprocess
 		
-	def __call__(self,img,**kwargs={}):
+	def __call__(self,img,**kwargs):
 		'''
 		===================================================
 		
@@ -67,51 +67,58 @@ class Metrics():
 				results[m] = p.concentration_index(0.35,0.75)
     			'''
 			if m == 'a2':
-				if 'mask' in kwargs.keys:
-					args[mask] = kwargs['mask']
+				if kwargs is not None:
+					if 'mask' in kwargs.keys:
+						args[mask] = kwargs['mask']
 				results[m] = a2(filtered,*args)
 			elif m == 'a3':
-				if 'mask' in kwargs.keys:
-					args[mask] = kwargs['mask']
+				if kwargs is not None:
+					if 'mask' in kwargs.keys:
+						args[mask] = kwargs['mask']
 				results[m] = a3(filtered,*args)
 			elif m == 's2':
-				if 'mask' in kwargs.keys:
-					args[mask] = kwargs['mask']
-				if 'd' in  kwargs.keys:
-					args['d'] = kwargs['d']
-				if 'order' in kwargs.keys:
-					args['order'] = kwargs['order']
+				if kwargs is not None:
+					if 'mask' in kwargs.keys:
+						args[mask] = kwargs['mask']
+					if 'd' in  kwargs.keys:
+						args['d'] = kwargs['d']
+					if 'order' in kwargs.keys:
+						args['order'] = kwargs['order']
 				results[m] = s2(filtered,*args)
 			elif m == 's3':
-				if 'mask' in kwargs.keys:
-					args['mask'] = kwargs['mask']
-				if 'd' in  kwargs.keys:
-					args['d'] = kwargs['d']
-				if 'order' in kwargs.keys:
-					args['order'] = kwargs['order']
+				if kwargs is not None:
+					if 'mask' in kwargs.keys:
+						args['mask'] = kwargs['mask']
+					if 'd' in  kwargs.keys:
+						args['d'] = kwargs['d']
+					if 'order' in kwargs.keys:
+						args['order'] = kwargs['order']
 				results[m] = s3(filtered,*args)
 			elif m == 'shH':
-				if 'percent' in kwargs.keys:
-					args['percent'] = kwargs['percent']
+				if kwargs is not None:
+					if 'percent' in kwargs.keys:
+						args['percent'] = kwargs['percent']
 				results[m] = eta.entropy(filtered,['Shannon'],['Histogram'],*args)
 			elif m == 'sqH':
-				if 'percent' in kwargs.keys:
-					args['percent'] = kwargs['percent']
+				if kwargs is not None:
+					if 'percent' in kwargs.keys:
+						args['percent'] = kwargs['percent']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Histogram'],*args)
 				
 			elif m == 'spH':
-				if 'nx' in kwargs.keys:
-					args['nx'] = kwargs['nx']
-				if 'ny' in kwargs.keys:
-					args['ny'] = kwargs['ny']
+				if kwargs is not None:
+					if 'nx' in kwargs.keys:
+						args['nx'] = kwargs['nx']
+					if 'ny' in kwargs.keys:
+						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['Shannon'],['Permutation'],*args)
 			elif m == 'spq':
-				if 'nx' in kwargs.keys:
-					args['nx'] = kwargs['nx']
-				if 'ny' in kwargs.keys:
-					args['ny'] = kwargs['ny']
+				if kwargs is not None:
+					if 'nx' in kwargs.keys:
+						args['nx'] = kwargs['nx']
+					if 'ny' in kwargs.keys:
+						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Permutation'],*args)
-				
 			elif m == 'ssH':
 				results[m] = eta.entropy(filtered,['Shannon'],['Spectral'])
 			elif m == 'ssq':
