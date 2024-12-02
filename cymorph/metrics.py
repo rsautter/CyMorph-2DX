@@ -1,5 +1,5 @@
 import numpy as np
-from .cymorph as *
+from .cymorph import *
 import petrofit as pf
 import eta
 
