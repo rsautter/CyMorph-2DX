@@ -122,9 +122,9 @@ class Metrics():
 						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Permutation'],*args)
 			elif m =='g1':
-				results[m] = ga(filtered.astype(np.float),["G1C"])["G1C"]
+				results[m] = ga(filtered.astype(float),["G1C"])["G1C"]
 			elif m =='g2':
-				results[m] = ga(filtered.astype(np.float),["G2"])["G2"]
+				results[m] = ga(filtered.astype(float),["G2"])["G2"]
 			elif m == 'g3':
-				results[m] = ga(filtered.astype(np.float),["G3"])["G3"]
+				results[m] = ga(filtered.astype(float),["G3"])["G3"]
 		return results
