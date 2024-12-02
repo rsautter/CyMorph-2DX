@@ -51,7 +51,10 @@ class Metrics():
 		
 		===================================================
 		'''
-		filtered = self.preprocess(img)
+		if self.preprocess is None:
+			filtered = img
+		else:
+			filtered = self.preprocess(img)
 		results = {}
 		for m in self.toMeasure:
 			args = {}
