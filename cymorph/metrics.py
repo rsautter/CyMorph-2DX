@@ -68,55 +68,55 @@ class Metrics():
     			'''
 			if m == 'a2':
 				if kwargs is not None:
-					if 'mask' in kwargs.keys:
+					if 'mask' in kwargs.keys():
 						args[mask] = kwargs['mask']
 				results[m] = a2(filtered,*args)
 			elif m == 'a3':
 				if kwargs is not None:
-					if 'mask' in kwargs.keys:
+					if 'mask' in kwargs.keys():
 						args[mask] = kwargs['mask']
 				results[m] = a3(filtered,*args)
 			elif m == 's2':
 				if kwargs is not None:
-					if 'mask' in kwargs.keys:
+					if 'mask' in kwargs.keys():
 						args[mask] = kwargs['mask']
-					if 'd' in  kwargs.keys:
+					if 'd' in  kwargs.keys():
 						args['d'] = kwargs['d']
-					if 'order' in kwargs.keys:
+					if 'order' in kwargs.keys():
 						args['order'] = kwargs['order']
 				results[m] = s2(filtered,*args)
 			elif m == 's3':
 				if kwargs is not None:
-					if 'mask' in kwargs.keys:
+					if 'mask' in kwargs.keys():
 						args['mask'] = kwargs['mask']
-					if 'd' in  kwargs.keys:
+					if 'd' in  kwargs.keys():
 						args['d'] = kwargs['d']
-					if 'order' in kwargs.keys:
+					if 'order' in kwargs.keys():
 						args['order'] = kwargs['order']
 				results[m] = s3(filtered,*args)
 			elif m == 'shH':
 				if kwargs is not None:
-					if 'percent' in kwargs.keys:
+					if 'percent' in kwargs.keys():
 						args['percent'] = kwargs['percent']
 				results[m] = eta.entropy(filtered,['Shannon'],['Histogram'],*args)
 			elif m == 'sqH':
 				if kwargs is not None:
-					if 'percent' in kwargs.keys:
+					if 'percent' in kwargs.keys():
 						args['percent'] = kwargs['percent']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Histogram'],*args)
 				
 			elif m == 'spH':
 				if kwargs is not None:
-					if 'nx' in kwargs.keys:
+					if 'nx' in kwargs.keys():
 						args['nx'] = kwargs['nx']
-					if 'ny' in kwargs.keys:
+					if 'ny' in kwargs.keys():
 						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['Shannon'],['Permutation'],*args)
 			elif m == 'spq':
 				if kwargs is not None:
-					if 'nx' in kwargs.keys:
+					if 'nx' in kwargs.keys():
 						args['nx'] = kwargs['nx']
-					if 'ny' in kwargs.keys:
+					if 'ny' in kwargs.keys():
 						args['ny'] = kwargs['ny']
 				results[m] = eta.entropy(filtered,['PowerlawTsallis'],['Permutation'],*args)
 			elif m == 'ssH':
