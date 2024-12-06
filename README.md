@@ -1,5 +1,5 @@
 # CyMorph2
-CyMorph-2DX is an openly accessible library designed for the analysis of galaxy morphology, and it represents a seamless evolution of the original CyMorph library. 
+CyMorph2 is an openly accessible library designed for the analysis of galaxy morphology, and it represents a seamless evolution of the original CyMorph library. 
 
 ### Install
     pip install git+https://github.com/rsautter/CyMorph2
