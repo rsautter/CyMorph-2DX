@@ -14,4 +14,4 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-homepage = "https://cymorph2Dx.github.io"
+homepage = "https://cymorph2.github.io"
