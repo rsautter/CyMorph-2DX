@@ -1,4 +1,4 @@
-# CyMorph2
+# CyMorph 2
 CyMorph2 is an openly accessible library designed for the analysis of galaxy morphology, and it represents a seamless evolution of the original CyMorph library. 
 
 ### Install
