@@ -3,9 +3,11 @@ from scipy.stats import pearsonr, spearmanr
 from scipy.signal import butter, filtfilt
 import scipy.ndimage as ndimage
 from GPA import GPA
+from astropy.stats import sigma_clipped_stats
+import petrofit as pf
 from scipy.ndimage.filters import convolve
 
-def asymmetry(mat: np.ndarray,mask: np.ndarray=None,angle: float = 90, corrFunct=spearmanr,returnScatter=False):
+def asymmetry(mat: np.ndarray,mask: np.ndarray=None,angle: float = 90.0, corrFunct=spearmanr,returnScatter=False):
 	if mask is None:
 		maskR = np.ones(mat.shape)
 		m = np.ones(mat.shape)
@@ -38,7 +40,18 @@ def smoothness(mat: np.ndarray,mask: np.ndarray=None, d:float = 0.3, order:int =
 		return corrFunct(v2,v1)[0], (v1,v2)
 	else:
 		return corrFunct(v2,v1)[0]
-	
+def concentration(mat: np.ndarray, r1:float, r2:float,minSize: float, th:float = None):
+	if th is None:
+		_, _, stddev = sigma_clipped_stats(image.data, sigma=3)
+	else:
+		stddev = th/3.0
+	cat, segm, segm_deblend = pf.make_catalog(
+    		mat,
+    		threshold=3.0*stddev,
+    		wcs=None,deblend=True,
+    		npixels=minSize,contrast=0.00,plot=False)
+	r_list = pf.make_radius_list(max_pix=min(),n=50)
+
 ##################################################################################################################################
 def a2(mat: np.ndarray,mask: np.ndarray=None,angle: float = 90, returnScatter=False):
 	return asymmetry(mat=mat,mask=mask,angle=angle, returnScatter=returnScatter,corrFunct=pearsonr)
@@ -55,11 +68,15 @@ def s3(mat: np.ndarray,mask: np.ndarray=None, d:float = 0.3, order:int = 2, retu
 def h(mat: np.ndarray,mask: np.ndarray=None,bins: int=100):
 	return entropy(mat,mask,bins)
 
+def g3(mat:np.ndarray,tol: float = 0.03):
+	ga = GPA(tol)
+	return (ga(mat.astype(float),moment=["G3"])["G3"])
+
 def g2(mat:np.ndarray,tol: float = 0.03):
 	ga = GPA(tol)
 	return (ga(mat.astype(float),moment=["G2"])["G2"])
 
 def g1(mat:np.ndarray,tol: float = 0.03):
 	ga = GPA(tol)
-	return (ga(mat.astype(float),moment=["G1_Classic"])["G1_Classic"])
+	return (ga(mat.astype(float),moment=["G1C"])["G1C"])
 

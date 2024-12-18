@@ -9,7 +9,8 @@ license = { text = "BSD 3-Clause License" }
 dependencies = [
     "numpy",
     "GPA",
-    "eta"
+    "eta",
+    "petrofit"
 ]
 dynamic = ["version"]
 

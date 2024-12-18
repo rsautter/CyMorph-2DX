@@ -1,0 +1,4 @@
+numpy
+GPA
+eta
+petrofit

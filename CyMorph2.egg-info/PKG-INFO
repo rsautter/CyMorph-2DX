@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: CyMorph2
+Version: 2.0
+Summary: A galaxy Morphology package
+Home-page: https://github.com/rsautter/CyMorph2
+Author: Rubens Andreas Sautter
+Author-email: Rubens Sautter <rubens.sautter@gmail.com>
+License: BSD 3-Clause License
+Project-URL: homepage, https://cymorph2.github.io
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: GPA
+Requires-Dist: eta
+Requires-Dist: petrofit
+
+# CyMorph 2
+CyMorph2 is an openly accessible library designed for the analysis of galaxy morphology, and it represents a seamless evolution of the original CyMorph library. 
+
+### Install
+    pip install git+https://github.com/rsautter/CyMorph2
+
+### Reference
+
+[1] Rosa, R.R., et al. "Gradient pattern analysis applied to galaxy morphology." Monthly Notices of the Royal Astronomical Society: Letters 477.1 (2018): L101-L105.
+
+[2] Barchi, P.H., et al. "Machine and Deep Learning applied to galaxy morphology-A comparative study." Astronomy and Computing 30 (2020): 100334.
