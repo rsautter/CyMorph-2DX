@@ -1,6 +1,7 @@
 import cymorph.metrics as cm
 import numpy as np
 import unittest
+import cymorph as cm
 
 class CyMorphTest(unittest.TestCase):
     def symmetricalCase(self):
